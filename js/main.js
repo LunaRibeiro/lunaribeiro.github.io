@@ -135,6 +135,21 @@ function iniciarInox() {
   });
 }
 
+function iniciarWhatsFlutuante() {
+  const botao = document.getElementById('whats');
+  const contato = document.getElementById('contato');
+  if (!botao) return;
+
+  const texto = 'Oi, Luna! Vi seu portfólio e quero conversar sobre um site.';
+  botao.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+
+  if (!contato || !('IntersectionObserver' in window)) return;
+
+  new IntersectionObserver(([entrada]) => {
+    botao.classList.toggle('escondido', entrada.isIntersecting);
+  }, { threshold: 0.25 }).observe(contato);
+}
+
 function iniciarFormulario() {
   const form = document.getElementById('form-orcamento');
   const erro = document.getElementById('erro-form');
@@ -169,3 +184,5 @@ iniciarMenu();
 iniciarChecklist();
 iniciarInox();
 iniciarFormulario();
+iniciarWhatsFlutuante();
+ 
