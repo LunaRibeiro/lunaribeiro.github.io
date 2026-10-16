@@ -1,13 +1,12 @@
-/* ===== Tokens ===== */
 :root {
-  --tinta: #07090F;      /* fundo */
-  --giz: #F2F4F8;        /* texto claro */
-  --azul: #2F66F5;       /* destaque principal */
-  --ceu: #8FB0FF;        /* azul claro, anotações */
-  --papel: #F4F2EC;      /* papel, polaroids, bilhetes */
-  --palido: #CFDCFF;     /* post-it azul */
-  --grafite: #141414;    /* texto sobre papel */
-  --cinza: #B3BBCB;      /* texto secundário */
+  --tinta: #07090F;
+  --giz: #F2F4F8;
+  --azul: #2F66F5;
+  --ceu: #8FB0FF;
+  --papel: #F4F2EC;
+  --palido: #CFDCFF;
+  --grafite: #141414;
+  --cinza: #B3BBCB;
   --fita: rgba(143, 176, 255, 0.55);
   --mao: 'Caveat', 'Comic Sans MS', cursive;
   --texto: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
@@ -50,7 +49,6 @@ a:hover { color: var(--giz); }
 
 .rabisco { font-family: var(--mao); font-weight: 700; }
 
-/* ===== Elementos de scrapbook ===== */
 .fita {
   position: absolute; width: 150px; height: 40px; background: var(--fita);
   clip-path: polygon(3% 0,97% 0,100% 18%,96% 36%,100% 54%,96% 72%,100% 90%,97% 100%,3% 100%,0 82%,4% 64%,0 46%,4% 28%,0 10%);
@@ -80,7 +78,6 @@ a:hover { color: var(--giz); }
 
 .secao-intro { color: var(--cinza); margin: -0.5rem 0 2.5rem; max-width: 40ch; }
 
-/* ===== Botões ===== */
 .botao {
   display: inline-flex; align-items: center; justify-content: center;
   font: 700 1.05rem var(--texto); color: #fff; background: var(--azul);
@@ -92,7 +89,6 @@ a:hover { color: var(--giz); }
 .botao-contorno:hover { background: rgba(143, 176, 255, 0.12); color: var(--giz); border-color: var(--ceu); }
 .botao-pequeno { padding: .55rem 1.1rem; font-size: .95rem; }
 
-/* ===== Topo ===== */
 .topo {
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -113,11 +109,9 @@ a:hover { color: var(--giz); }
   border: 2px solid var(--ceu); border-radius: 999px; padding: .45rem 1rem; cursor: pointer;
 }
 
-/* ===== Layout das seções ===== */
 main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); }
 .secao { padding: clamp(4.5rem, 10vw, 8rem) 0 0; }
 
-/* ===== Hero ===== */
 .hero {
   display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(2rem, 6vw, 5rem);
   align-items: center; padding-top: clamp(3rem, 8vw, 6rem);
@@ -129,8 +123,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .sublinhado { width: min(340px, 70%); height: 30px; display: block; margin-top: -.5rem; }
 .sublinhado path { fill: none; stroke: var(--azul); stroke-width: 8; stroke-linecap: round; }
 .sublinhado .fino { stroke-width: 4; opacity: .7; }
-.hero-lead { font-size: clamp(1.2rem, 2vw, 1.45rem); max-width: 30ch; margin: 1.75rem 0 2rem; }
+.hero-lead { font-size: clamp(1.15rem, 1.8vw, 1.35rem); max-width: 40ch; margin: 1.75rem 0 2rem; }
 .hero-acoes { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-prova { margin: 1.5rem 0 0; color: var(--cinza); font-size: 1rem; }
 
 .hero-foto { position: relative; padding: 2rem 0 3rem; }
 .polaroid-hero { transform: rotate(3deg); max-width: 420px; margin-left: auto; animation: cair .9s cubic-bezier(.2, .9, .3, 1.2) both; }
@@ -149,7 +144,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .selo-giro { transform-origin: 110px 110px; animation: girar 24s linear infinite; }
 @keyframes girar { to { transform: rotate(360deg); } }
 
-/* ===== Sobre ===== */
 .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 
 .bilhete {
@@ -159,7 +153,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .bilhete p { margin: 0; }
 .bilhete-pre { color: #3A3F4A; font-weight: 500; }
 .bilhete-curso { font-size: clamp(1.9rem, 3.2vw, 2.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
-.bilhete-circulado { position: relative; display: inline-block; font-size: 3.2rem; color: var(--azul); padding: 0 1rem; margin: .4rem 0 1rem !important; }
+.bilhete .bilhete-circulado { position: relative; display: inline-block; font-size: 3.2rem; color: var(--azul); padding: 0 1rem; margin: .4rem 0 1rem; }
 .bilhete-circulado svg { position: absolute; inset: -6px -10px; width: calc(100% + 20px); height: calc(100% + 12px); }
 .bilhete-circulado path { fill: none; stroke: var(--grafite); stroke-width: 4; stroke-linecap: round; }
 .bilhete-texto { color: #3A3F4A; max-width: 34ch; }
@@ -183,7 +177,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .passagem-aviao .tracejado { stroke-dasharray: 10 12; }
 .passagem-rodape { grid-column: 1 / -1; margin: .5rem 0 0; font-size: 1.9rem; text-align: center; color: #fff; }
 
-/* Fora do código: folha de caderno */
 .fora { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; margin-top: 5rem; align-items: start; }
 .fora-cabeca h3 { font-size: clamp(2.8rem, 5vw, 4rem); margin: 0; line-height: 1; }
 .fora-cabeca p { color: var(--cinza); margin: .5rem 0 0; }
@@ -215,7 +208,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .caderno.visivel li:nth-child(5) .check::after { transition-delay: .6s; }
 .caderno.visivel li:nth-child(6) .check::after { transition-delay: .75s; }
 
-/* ===== Post-its (serviços e etapas) ===== */
 .servicos, .etapas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
 .etapas { grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; padding: 0; margin: 0; }
 .postit {
@@ -229,12 +221,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .postit p { margin: 0; color: #3A3F4A; font-size: 1rem; }
 .postit svg { width: 54px; height: 54px; }
 .postit svg path, .postit svg circle { fill: none; stroke: var(--azul); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.servicos-nota { font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--ceu); margin: 3rem 0 0; max-width: 46ch; transform: rotate(-1deg); }
+
 .etapa-numero { font-size: 3.6rem; line-height: .8; color: var(--azul); }
 
-/* ===== Projetos ===== */
 .projetos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
 .projeto { display: flex; flex-direction: column; gap: 1rem; }
-.navegador { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--sombra); border: 2px solid #1E2433; }
+.navegador { display: block; text-decoration: none; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--sombra); border: 2px solid #1E2433; }
+.navegador img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; object-position: top; }
 .navegador-barra { display: flex; align-items: center; gap: .6rem; padding: .6rem .9rem; background: #EEF0F4; }
 .navegador-bolinhas { display: flex; gap: .35rem; }
 .navegador-bolinhas span { width: 10px; height: 10px; border-radius: 50%; background: #C5CAD4; }
@@ -243,13 +237,30 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .projeto-tipo { font-family: var(--mao); font-weight: 700; font-size: 1.6rem; color: var(--ceu); margin: 0; }
 .projeto p { margin: 0; color: var(--cinza); max-width: 48ch; }
 .projeto-link { font-weight: 700; }
+.capa {
+  aspect-ratio: 2 / 1; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  background: var(--palido); color: var(--azul); font-size: clamp(2.2rem, 4vw, 3.2rem); text-align: center; line-height: 1;
+}
 .projeto-vazio {
   border: 3px dashed rgba(143, 176, 255, .5); border-radius: 18px; padding: 2.5rem;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1rem; min-height: 320px;
 }
 .projeto-vazio .rabisco { font-size: 2.6rem; line-height: 1.05; margin: 0; }
 
-/* ===== Inox ===== */
+.duvidas { max-width: 820px; border-top: 2px dashed rgba(143, 176, 255, .35); }
+.duvidas details { border-bottom: 2px dashed rgba(143, 176, 255, .35); }
+.duvidas summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1.4rem 0; font-size: 1.25rem; font-weight: 700; cursor: pointer; list-style: none;
+}
+.duvidas summary::-webkit-details-marker { display: none; }
+.duvidas summary::after {
+  content: "+"; font-family: var(--mao); font-size: 2.6rem; line-height: 1; color: var(--ceu);
+  transition: transform .2s ease;
+}
+.duvidas details[open] summary::after { transform: rotate(45deg); }
+.duvidas details p { margin: 0 0 1.5rem; color: var(--cinza); max-width: 62ch; }
+
 .inox { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: center; }
 .polaroid-inox { transform: rotate(-3deg); max-width: 360px; }
 .polaroid-inox .polaroid-imagem { aspect-ratio: 1; }
@@ -263,13 +274,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 }
 @keyframes pular { from { transform: scale(.85) rotate(-1.5deg); opacity: 0; } }
 
-/* ===== Contato ===== */
 .contato { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; padding-bottom: 6rem; }
 .contato-nota { font-size: 2.4rem; color: var(--ceu); margin: 0 0 1rem; transform: rotate(-2deg); display: inline-block; }
 .formulario {
   position: relative; background: var(--papel); color: var(--grafite); padding: 2.75rem 2.25rem 2.25rem;
   box-shadow: var(--sombra); transform: rotate(1deg); display: flex; flex-direction: column;
+  color-scheme: light;
 }
+.formulario option { color: var(--grafite); background: #fff; }
 .formulario label { font-weight: 700; font-size: 1rem; margin-top: 1rem; }
 .formulario label:first-of-type { margin-top: 0; }
 .formulario input, .formulario select, .formulario textarea {
@@ -280,14 +292,12 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .formulario .botao { margin-top: 1.5rem; align-self: flex-start; }
 .erro { color: #B42318; font-weight: 500; margin: 1rem 0 0; }
 
-/* ===== Rodapé ===== */
 .rodape {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
   padding: 2rem clamp(1.25rem, 5vw, 4rem); border-top: 1px solid rgba(143, 176, 255, .12); color: var(--cinza);
 }
 .rodape p { margin: 0; }
 
-/* ===== Responsivo ===== */
 @media (max-width: 900px) {
   .menu-botao { display: inline-block; }
   .menu {
