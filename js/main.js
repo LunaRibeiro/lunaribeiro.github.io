@@ -143,11 +143,20 @@ function iniciarWhatsFlutuante() {
   const texto = 'Oi, Luna! Vi seu portfólio e quero conversar sobre um site.';
   botao.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 
-  if (!contato || !('IntersectionObserver' in window)) return;
+  const inicio = document.getElementById('inicio');
+  if (!contato || !inicio || !('IntersectionObserver' in window)) return;
 
-  new IntersectionObserver(([entrada]) => {
-    botao.classList.toggle('escondido', entrada.isIntersecting);
-  }, { threshold: 0.25 }).observe(contato);
+  const visiveis = new Set();
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) visiveis.add(target.id);
+      else visiveis.delete(target.id);
+    });
+    botao.classList.toggle('escondido', visiveis.size > 0);
+  }, { threshold: 0.25 });
+
+  observador.observe(inicio);
+  observador.observe(contato);
 }
 
 function iniciarFormulario() {
@@ -185,4 +194,3 @@ iniciarChecklist();
 iniciarInox();
 iniciarFormulario();
 iniciarWhatsFlutuante();
- 
