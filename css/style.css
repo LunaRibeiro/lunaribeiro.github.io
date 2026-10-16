@@ -177,27 +177,45 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .passagem-aviao .tracejado { stroke-dasharray: 10 12; }
 .passagem-rodape { grid-column: 1 / -1; margin: .5rem 0 0; font-size: 1.9rem; text-align: center; color: #fff; }
 
-.fora { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; margin-top: 5rem; align-items: start; }
-.fora-cabeca h3 { font-size: clamp(2.8rem, 5vw, 4rem); margin: 0; line-height: 1; }
-.fora-cabeca p { color: var(--cinza); margin: .5rem 0 0; }
+.fora { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 3rem; margin-top: 6rem; align-items: center; }
+.fora-cabeca { position: relative; }
+.fora-cabeca h3 { font-size: clamp(3rem, 5.5vw, 4.4rem); margin: 0; line-height: 1; }
+.fora-cabeca p { color: var(--cinza); margin: .75rem 0 0; max-width: 22ch; }
+.fora-seta { display: block; width: 170px; margin: 1.5rem 0 0 4rem; }
+.fora-seta path { fill: none; stroke: var(--ceu); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+
 .caderno {
+  --linha: 2.75rem;
+  --margem: 3.6rem;
+  --pauta: rgba(47, 102, 245, .22);
   list-style: none; margin: 0; position: relative;
+  padding: var(--linha) 2.5rem var(--linha) calc(var(--margem) + 3rem);
   background-color: var(--papel);
-  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 2.95rem, rgba(47, 102, 245, .22) 2.95rem, rgba(47, 102, 245, .22) 3rem);
-  padding: 2rem 2rem 2rem 4.5rem; transform: rotate(-1deg); box-shadow: var(--sombra);
-  display: flex; flex-direction: column; gap: 1rem;
+  background-image:
+    radial-gradient(circle at 1.5rem center, var(--tinta) .5rem, transparent .55rem),
+    linear-gradient(90deg, transparent var(--margem), rgba(214, 64, 64, .45) var(--margem), rgba(214, 64, 64, .45) calc(var(--margem) + 2px), transparent calc(var(--margem) + 2px)),
+    repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--linha) - 2px), var(--pauta) calc(var(--linha) - 2px), var(--pauta) var(--linha));
+  background-size: 100% calc(var(--linha) * 3), 100% 100%, 100% 100%;
+  background-repeat: repeat-y, no-repeat, repeat;
+  transform: rotate(-1deg); box-shadow: var(--sombra);
 }
-.caderno::before { content: ""; position: absolute; left: 3.2rem; top: 0; bottom: 0; width: 2px; background: rgba(47, 102, 245, .45); }
-.caderno li { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .75rem; color: var(--grafite); }
-.caderno .item { font-family: var(--mao); font-weight: 700; font-size: 2.1rem; line-height: 1.1; }
-.caderno .aparte { font-family: var(--mao); font-weight: 500; font-size: 1.55rem; color: var(--azul); }
-.caderno mark { background: rgba(143, 176, 255, .65); color: inherit; padding: 0 .3rem; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.caderno::before, .caderno::after {
+  content: ""; position: absolute; top: -18px; width: 130px; height: 38px; background: var(--fita);
+  clip-path: polygon(3% 0,97% 0,100% 18%,96% 36%,100% 54%,96% 72%,100% 90%,97% 100%,3% 100%,0 82%,4% 64%,0 46%,4% 28%,0 10%);
+}
+.caderno::before { left: -30px; transform: rotate(-28deg); }
+.caderno::after { right: -30px; transform: rotate(28deg); }
+.caderno li { position: relative; display: flex; flex-direction: column; color: var(--grafite); }
+.caderno .item, .caderno .aparte { font-family: var(--mao); line-height: var(--linha); transform: translateY(.4rem); }
+.caderno .item { font-weight: 700; font-size: 2rem; }
+.caderno .aparte { font-weight: 500; font-size: 1.5rem; color: var(--azul); }
+.caderno mark { background: linear-gradient(transparent 30%, rgba(143, 176, 255, .7) 30%, rgba(143, 176, 255, .7) 85%, transparent 85%); color: inherit; padding: 0 .2rem; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .check {
-  position: absolute; left: -2.6rem; top: .35rem; width: 1.6rem; height: 1.6rem;
+  position: absolute; left: -2.4rem; top: calc((var(--linha) - 1.5rem) / 2 + .3rem); width: 1.5rem; height: 1.5rem;
   border: 2.5px solid var(--grafite); border-radius: 4px 6px 3px 7px;
 }
 .check::after {
-  content: ""; position: absolute; left: .3rem; top: -.35rem; width: .55rem; height: 1.1rem;
+  content: ""; position: absolute; left: .3rem; top: -.4rem; width: .55rem; height: 1.1rem;
   border: solid var(--azul); border-width: 0 4px 4px 0; transform: rotate(40deg) scale(0); transform-origin: center;
   transition: transform .35s cubic-bezier(.2, .9, .3, 1.4);
 }
@@ -319,9 +337,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
   .passagem { grid-template-columns: 1fr 1fr; padding: 2rem 1.75rem; }
   .passagem-aviao { display: none; }
   .passagem-sigla { font-size: 3.6rem; }
-  .bilhete, .caderno, .formulario { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .caderno { padding-left: 3.75rem; }
-  .caderno::before { left: 2.6rem; }
+  .bilhete, .formulario { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .caderno { --margem: 2.6rem; padding-right: 1.25rem; }
+  .caderno .item { font-size: 1.8rem; }
+  .caderno .aparte { font-size: 1.35rem; }
+  .fora-seta { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
