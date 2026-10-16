@@ -78,7 +78,7 @@ a:hover { color: var(--giz); }
 
 .arrasta { display: none; }
 
-.secao-intro { color: var(--cinza); margin: -0.5rem 0 2.5rem; max-width: 40ch; }
+.secao-intro { color: var(--cinza); margin: -0.5rem 0 2.5rem; max-width: 90ch; text-wrap: balance; }
 
 .botao {
   display: inline-flex; align-items: center; justify-content: center;
