@@ -279,7 +279,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .formulario {
   position: relative; background: var(--papel); color: var(--grafite); padding: 2.75rem 2.25rem 2.25rem;
   box-shadow: var(--sombra); transform: rotate(1deg); display: flex; flex-direction: column;
+  color-scheme: light;
 }
+.formulario option { color: var(--grafite); background: #fff; }
 .formulario label { font-weight: 700; font-size: 1rem; margin-top: 1rem; }
 .formulario label:first-of-type { margin-top: 0; }
 .formulario input, .formulario select, .formulario textarea {
