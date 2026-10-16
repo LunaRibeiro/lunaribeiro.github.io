@@ -76,6 +76,8 @@ a:hover { color: var(--giz); }
   background: no-repeat center / 100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 44' preserveAspectRatio='none'%3E%3Cpath d='M6 24 C 90 10, 180 32, 270 18 S 400 12, 454 22' fill='none' stroke='%232F66F5' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
+.arrasta { display: none; }
+
 .secao-intro { color: var(--cinza); margin: -0.5rem 0 2.5rem; max-width: 40ch; }
 
 .botao {
@@ -337,18 +339,37 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
     border-bottom: 1px solid rgba(143, 176, 255, .12); display: none;
   }
   .menu.aberto { display: flex; }
+  .menu a { padding: .35rem 0; font-size: 1.15rem; }
   .hero, .sobre-grid, .fora, .inox, .contato { grid-template-columns: 1fr; }
-  .hero-foto { max-width: 380px; margin: 0 auto; }
-  .selo { left: -12px; top: 30px; width: 130px; }
-  .servicos { grid-template-columns: 1fr; }
+  .hero-foto { width: min(320px, 82vw); margin: 0 auto; padding-bottom: 1rem; }
+  .selo { left: -18px; top: 24px; width: 118px; }
   .etapas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .projetos { grid-template-columns: 1fr; }
-  .polaroid-inox { margin: 0 auto; }
+  .polaroid-inox { width: min(300px, 78vw); margin: 0 auto; }
+  .inox { gap: 2.5rem; }
+  .contato { gap: 2.5rem; }
+}
+
+@media (max-width: 700px) {
+  .secao { padding-top: 4.5rem; }
+  .arrasta { display: block; font-size: 1.6rem; color: var(--ceu); margin: -1rem 0 .5rem; text-align: right; }
+  .carrossel {
+    display: flex; gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * clamp(1.25rem, 5vw, 4rem)); padding: 1.5rem clamp(1.25rem, 5vw, 4rem) 2.5rem;
+    scroll-padding: 0 clamp(1.25rem, 5vw, 4rem); scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .carrossel::-webkit-scrollbar { display: none; }
+  .carrossel > * { flex: 0 0 82%; scroll-snap-align: start; }
+  .projetos.carrossel > * { flex-basis: 86%; }
+  .projeto-vazio { min-height: 0; }
 }
 @media (max-width: 560px) {
-  .whats { padding: .9rem; }
+  .topo { padding: .8rem 1.25rem; }
+  .hero { padding-top: 2rem; gap: 2.5rem; }
+  .hero-nome { font-size: 8.5rem; }
+  .hero-acoes .botao { flex: 1 1 100%; }
+  .whats { right: 1rem; padding: .85rem; }
   .whats span { display: none; }
-  .etapas { grid-template-columns: 1fr; }
   .passagem { grid-template-columns: 1fr 1fr; padding: 2rem 1.75rem; }
   .passagem-aviao { display: none; }
   .passagem-sigla { font-size: 3.6rem; }
@@ -357,6 +378,15 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
   .caderno .item { font-size: 1.8rem; }
   .caderno .aparte { font-size: 1.35rem; }
   .fora-seta { display: none; }
+  .fora { margin-top: 4rem; gap: 2rem; }
+  .caderno::before { left: -8px; width: 100px; }
+  .caderno::after { right: -8px; width: 100px; }
+  .postit { padding: 1.75rem 1.5rem 1.5rem; }
+  .duvidas summary { font-size: 1.1rem; padding: 1.2rem 0; }
+  .contato-nota { font-size: 2rem; line-height: 1.1; }
+  .formulario { transform: none; }
+  .formulario .botao { align-self: stretch; }
+  .rodape { flex-direction: column; padding-bottom: 6rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
