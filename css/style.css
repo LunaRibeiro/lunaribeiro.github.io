@@ -310,6 +310,19 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
 .formulario .botao { margin-top: 1.5rem; align-self: flex-start; }
 .erro { color: #B42318; font-weight: 500; margin: 1rem 0 0; }
 
+.whats {
+  position: fixed; right: 1.25rem; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); z-index: 60;
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .8rem 1.25rem .8rem 1rem; border-radius: 999px;
+  background: #1E9E52; color: #fff; font-weight: 700; text-decoration: none;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .45);
+  transition: transform .2s ease, opacity .2s ease, visibility .2s;
+}
+.whats:hover { color: #fff; background: #17863F; transform: rotate(-3deg) scale(1.04); }
+.whats svg { width: 28px; height: 28px; }
+.whats svg path { fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.whats.escondido { opacity: 0; visibility: hidden; transform: translateY(1rem); }
+
 .rodape {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
   padding: 2rem clamp(1.25rem, 5vw, 4rem); border-top: 1px solid rgba(143, 176, 255, .12); color: var(--cinza);
@@ -333,6 +346,8 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4rem); 
   .polaroid-inox { margin: 0 auto; }
 }
 @media (max-width: 560px) {
+  .whats { padding: .9rem; }
+  .whats span { display: none; }
   .etapas { grid-template-columns: 1fr; }
   .passagem { grid-template-columns: 1fr 1fr; padding: 2rem 1.75rem; }
   .passagem-aviao { display: none; }
